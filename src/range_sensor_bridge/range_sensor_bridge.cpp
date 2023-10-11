@@ -34,4 +34,5 @@ void RangeSensor::OnRanges(
 }  // namespace hippo_gz_plugins
 
 #include <rclcpp_components/register_node_macro.hpp>
-RCLCPP_COMPONENTS_REGISTER_NODE(hippo_gz_plugins::range_sensor_bridge::RangeSensor)
+RCLCPP_COMPONENTS_REGISTER_NODE(
+    hippo_gz_plugins::range_sensor_bridge::RangeSensor)

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ignition/gazebo/System.hh>
+
 #include "barometer_private.hpp"
 
 namespace barometer {

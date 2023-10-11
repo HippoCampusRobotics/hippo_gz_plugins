@@ -96,7 +96,7 @@ void PluginPrivate::PublishAngularVelocity(
     return;
   }
   last_angular_velocity_pub_time_ = _sim_time;
-  
+
   ignition::msgs::Twist msg;
 
   auto header = msg.mutable_header();

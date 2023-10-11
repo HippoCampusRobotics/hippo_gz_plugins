@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ignition/gazebo/System.hh>
+
 #include "odometry_private.hpp"
 
 namespace odometry {
