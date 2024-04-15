@@ -46,6 +46,8 @@ class PluginPrivate {
     double max_detection_distance{5.0};
     double drop_probability_exp{2.0};
     std::vector<TargetModel> target_models;
+    ignition::math::Vector3d translation;
+    ignition::math::Vector3d rotation;
   } sdf_params_;
 
   std::optional<double> GetRange(

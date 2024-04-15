@@ -56,6 +56,8 @@ void PluginPrivate::ParseSdf(const std::shared_ptr<const sdf::Element> &_sdf) {
                  sdf_params_.max_detection_distance);
   AssignSdfParam(_sdf, "drop_probability_exp",
                  sdf_params_.drop_probability_exp);
+  AssignSdfParam(_sdf, "translation", sdf_params_.translation);
+  AssignSdfParam(_sdf, "rotation", sdf_params_.rotation);
 }
 
 bool PluginPrivate::InitModel(ignition::gazebo::EntityComponentManager &_ecm,
@@ -92,6 +94,12 @@ std::optional<double> PluginPrivate::GetRange(
 
 std::optional<ignition::math::Pose3d> PluginPrivate::GetPose(
     const ignition::gazebo::EntityComponentManager &_ecm) {
+  auto pose = link_.WorldPose(_ecm);
+  if (pose) {
+    pose->Pos() += pose->Rot().RotateVector(sdf_params_.translation);
+    ignition::math::Quaterniond q{sdf_params_.rotation};
+    pose->Rot() = q * pose->Rot();
+  }
   return link_.WorldPose(_ecm);
 }
 
