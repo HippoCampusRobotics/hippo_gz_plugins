@@ -10,7 +10,6 @@
   <depend>ignition-plugin</depend>
   <depend>ignition-gazebo6</depend>
   <depend>ignition-common4</depend>
-  <depend>hippo_gz_msgs</depend>
   <depend>hippo_common</depend>
   <depend>hippo_msgs</depend>
 
