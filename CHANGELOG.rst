@@ -2,8 +2,8 @@
 Changelog for package hippo_gz_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2024-09-24)
+------------------
 * migrated deprecated code
 * adapted plugin paths to follow ROSCON22 best practices
 * migrated ignition to gz in package xml
