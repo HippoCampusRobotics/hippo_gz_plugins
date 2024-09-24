@@ -26,8 +26,8 @@ find_package(gz_sim_vendor REQUIRED)
 find_package(gz-sim REQUIRED)
 find_package(gz_transport_vendor REQUIRED)
 find_package(gz-transport REQUIRED)
-find_package(gz_common_vendor REQUIRED)
-find_package(gz-common REQUIRED)
+find_package(gz_utils_vendor REQUIRED)
+find_package(gz-utils REQUIRED)
 find_package(gz_msgs_vendor REQUIRED)
 find_package(gz-msgs REQUIRED)
 find_package(sdformat_vendor REQUIRED)
@@ -65,7 +65,7 @@ function(add_plugin plugin_name)
   target_link_libraries(${plugin_name}
     gz-plugin::core
     gz-sim::core
-    gz-common::core
+    gz-utils::core
     gz-msgs::core
     gz-transport::core
     hippo_gz_plugins-msgs

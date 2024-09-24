@@ -1,4 +1,4 @@
-#include <gz/common.hh>
+#include <gz/utils.hh>
 #include <sdf/Element.hh>
 
 template <typename T>

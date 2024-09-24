@@ -69,7 +69,7 @@ void PluginPrivate::ApplyWrench(gz::sim::EntityComponentManager &_ecm) {
   }
   auto pose = link_.WorldPose(_ecm);
   auto parent_pose = parent_link_.WorldPose(_ecm);
-  auto pose_diff = *pose - *parent_pose;
+  auto pose_diff = (*parent_pose).Inverse() * (*pose);
   link_.AddWorldForce(_ecm, pose->Rot().RotateVector(ThrusterForce()));
 
   auto parent_wrench_component =

@@ -9,7 +9,7 @@
 
   <depend>gz_plugin_vendor</depend>
   <depend>gz_sim_vendor</depend>
-  <depend>gz_common_vendor</depend>
+  <depend>gz_utils_vendor</depend>
   <depend>hippo_common</depend>
   <depend>hippo_msgs</depend>
 
