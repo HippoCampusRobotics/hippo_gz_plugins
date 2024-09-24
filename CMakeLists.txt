@@ -72,9 +72,7 @@ function(add_plugin plugin_name)
   )
 
   install(TARGETS ${plugin_name}
-  ARCHIVE DESTINATION lib
-  LIBRARY DESTINATION lib
-  RUNTIME DESTINATION bin
+    DESTINATION lib/${PROJECT_NAME}
   )
 endfunction()
 
