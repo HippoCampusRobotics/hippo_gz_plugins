@@ -2,8 +2,8 @@
 Changelog for package hippo_gz_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2024-09-24)
+------------------
 * added sh environment hook. dsv does not seem to work for deb install
 * Contributors: Thies Lennart Alff
 
