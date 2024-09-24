@@ -120,6 +120,7 @@ add_subdirectory(src/hydrodynamics)
 add_subdirectory(src/pose)
 add_subdirectory(src/kinematic_control)
 
+ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/${PROJECT_NAME}.sh.in")
 ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/env-hooks/${PROJECT_NAME}.dsv.in")
 
 ament_package()
