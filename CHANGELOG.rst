@@ -2,8 +2,8 @@
 Changelog for package hippo_gz_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2024-10-23)
+------------------
 * disabled hardcoded deadband for thrusters. Future us should probably use a parameter for this.
 * Contributors: Thies Lennart Alff
 
