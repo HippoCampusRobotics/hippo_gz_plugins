@@ -2,8 +2,8 @@
 Changelog for package hippo_gz_plugins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.3 (2024-11-28)
+------------------
 * fix sign error and add much needed comments
 * Contributors: NBauschmann
 
