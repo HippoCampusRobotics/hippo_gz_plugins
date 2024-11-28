@@ -116,30 +116,46 @@ std::optional<gz::math::Pose3d> PluginPrivate::GetTargetPose(
 bool PluginPrivate::DropMeasurement(const gz::sim::EntityComponentManager &_ecm,
                                     const TargetModel &_target) {
   auto target_pose = GetTargetPose(_ecm, _target);
+
+  // sensor's pose (not robot's pose!) since
+  // range sensor position and orientation are taken into account in 
+  // function GetPose() defined above
   auto pose = GetPose(_ecm);
 
   if (!(target_pose && pose)) {
     return true;
   }
+  // vector pointing from sensor to tag
   gz::math::Vector3d target_vec =
       target_pose.value().Pos() - pose.value().Pos();
 
+  // tag's normal vector in world frame.
+  // z-axis of tag is pointing to the back 
   gz::math::Vector3d target_normal_vec =
-      target_pose.value().Rot().RotateVector(-1.0 * gz::math::Vector3d::UnitZ);
+      target_pose.value().Rot().RotateVector(gz::math::Vector3d::UnitZ);
 
+  // sensor's normal_vector in world frame
   gz::math::Vector3d normal_vec =
       pose.value().Rot().RotateVector(gz::math::Vector3d::UnitX);
 
+  // tag within camera's fov? 
+  // -> look at angle between sensor's normal vector 
+  // and vector poiting from sensor to tag
   double fov_angle = acos(target_vec.Dot(normal_vec) /
                           (target_vec.Length() * normal_vec.Length()));
+
+  // even though tag is visible, it might still not be showing it's 
+  // front to camera, tag can only be detected up to a certain angle
+  // -> look at angle between tag's normal vector and sensor's normal vector
   double viewing_angle =
       acos(target_normal_vec.Dot(normal_vec) /
            (target_normal_vec.Length() * normal_vec.Length()));
   bool is_visible = (fov_angle < sdf_params_.fov_angle / 2.0) &&
                     (viewing_angle < sdf_params_.max_viewing_angle);
   if (!is_visible) {
-    return true;
+    return true; // no measurement
   }
+  // tag visible but measurement might still be lost somehow
   double p = uniform_distribution_(random_generator_);
   double p_dist = uniform_distribution_(random_generator_);
   double drop_prob_dist = DistanceDropProbability(target_vec.Length());
